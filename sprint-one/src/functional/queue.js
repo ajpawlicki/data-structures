@@ -4,28 +4,28 @@ var Queue = function() {
   // Use an object with numeric keys to store values
   var storage = {};
   var size = 0;
-  var index = 0;
 
   // Implement the methods below
 
   someInstance.enqueue = function(value) {
-    storage[index] = value;
+    storage[size] = value;
     size++;
-    index++;
   };
 
   someInstance.dequeue = function() {
     if (size > 0) {
+      // debugger;
       size--;
-      var smallestKey = Infinity;
-      for (var key in storage) {
-        if (key < smallestKey) { smallestKey = key; }
+      var result = storage[0];
+      delete storage[0];
+      // Shift keys in object down by 1
+      for (var i = 0; i < size; i++) {
+        for (var key in storage) {
+          storage[i] = storage[key];
+        }
       }
-      var temp = storage[smallestKey];
-      delete storage[smallestKey];
-      return temp;
+      return result;
     }
-    
   };
 
   someInstance.size = function() {
