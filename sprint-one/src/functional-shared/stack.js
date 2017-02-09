@@ -14,12 +14,14 @@ var stackMethods = {
   size: function() {
     return this.stackSize;
   },
-  push: function() {
+  push: function(value) {
+    this[this.stackSize] = value; 
     this.stackSize++;
   },
   pop: function() {
     if (this.stackSize > 0) {
       this.stackSize--;
+      return this[this.stackSize];
     }
   }
 };
