@@ -26,10 +26,9 @@ var queueMethods = {
           minIndex = key;
         }
       }
-      var temp = this[]
-      return this[minIndex];
+      var temp = this[minIndex];
+      delete this[minIndex];
+      return temp;
     }
   }
 };
-
-
