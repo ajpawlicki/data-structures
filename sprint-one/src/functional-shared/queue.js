@@ -14,6 +14,11 @@ var queueMethods = {
   },
   enqueue: function() {
     this.queueSize++;
+  },
+  dequeue: function() {
+    if (this.queueSize > 0) {
+      this.queueSize--;
+    }
   }
 };
 
