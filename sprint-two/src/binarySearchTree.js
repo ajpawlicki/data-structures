@@ -10,13 +10,15 @@ var binaryTreeMethods = {};
 
 binaryTreeMethods.insert = function(value) {
   var nextTree, direction;
-  this.value > value ? direction = 'left' : direction = 'right';
+  if (!this.contains(value)) {
+    this.value > value ? direction = 'left' : direction = 'right';
 
-  if (this[direction]) {
-    nextTree = this[direction];
-    nextTree.insert(value);
-  } else {
-    this[direction] = BinarySearchTree(value);
+    if (this[direction]) {
+      nextTree = this[direction];
+      nextTree.insert(value);
+    } else {
+      this[direction] = BinarySearchTree(value);
+    }
   }
 };
 
