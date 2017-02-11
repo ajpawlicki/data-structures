@@ -6,7 +6,7 @@ var Graph = function() {
 
 // Add a node to the graph, passing in the node's value.
 Graph.prototype.addNode = function(node) {
-  var newNode = new Node(node);
+  var newNode = new GraphNode(node);
   this[node] = newNode;
 };
 
@@ -60,7 +60,7 @@ Graph.prototype.forEachNode = function(cb) {
  * Complexity: What is the time complexity of the above functions?
  */
 
-var Node = function(value) {
+var GraphNode = function(value) {
   this.value = value;
   this.edges = [];
 };
