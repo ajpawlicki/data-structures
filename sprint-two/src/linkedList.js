@@ -38,7 +38,6 @@ var LinkedList = function() {
 
     // return _.contains(this.head.value, target);
   };
-
   return list;
 };
 

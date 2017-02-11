@@ -5,6 +5,7 @@ var Queue = function() {
     queueSize: 0
   };
   _.extend(newInstance, queueMethods);
+  // console.log(newInstance);
   return newInstance;
 };
 
@@ -34,5 +35,3 @@ var queueMethods = {
     }
   }
 };
-
-
