@@ -5,38 +5,36 @@ var LinkedList = function() {
 
   list.addToTail = function(value) {
     var newNode = Node(value);
-    var isFirstNode = true;
-    for (var key in this) {
-      if (Number.isInteger(parseInt(key))) {
-        isFirstNode = false;    
-      }
-    }
-    if (isFirstNode) {
-      this.head = newNode;
-    } else {
+    if (this.tail) {
       var oldNode = this.tail;
       oldNode.next = newNode;
     }
-    this[value] = newNode;
-    //this.head = newNode;
+    if (!this.head) {
+      this.head = newNode;
+    }
     this.tail = newNode;
   };
 
   list.removeHead = function() {
     var firstNode = this.head;
-    delete this[firstNode.value];
     this.head = firstNode.next;
     return firstNode.value;
   };
 
   list.contains = function(target) {
-    for (var key in this) {
-      if (key == target) {
+    var find = function(node) {
+      if (node.value === target) {
         return true;
+      } else if (node.next) {
+        return find(node.next);
+      } else {
+        return false;
       }
-    }
-    return false;
+    };
+
+    return find(this.head);
   };
+
   return list;
 };
 
