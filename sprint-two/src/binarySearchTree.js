@@ -9,23 +9,16 @@ var BinarySearchTree = function(value) {
 var binaryTreeMethods = {};
 
 binaryTreeMethods.insert = function(value) {
-  // Base case: compare value to top tree value (what is this bound to?)
-  // Depending on if value is greather than or less than top tree value then check to see if corresponding side is defined
-    // If undefined add value as new left or right child of top tree
-    // Else run recursion
   var nextTree, direction;
+  if (!this.contains(value)) {
+    this.value > value ? direction = 'left' : direction = 'right';
 
-  if (this.value > value) {
-    direction = 'left';
-  } else {
-    direction = 'right';
-  }
-
-  if (this[direction]) {
-    nextTree = this[direction];
-    nextTree.insert(value);
-  } else {
-    this[direction] = BinarySearchTree(value);
+    if (this[direction]) {
+      nextTree = this[direction];
+      nextTree.insert(value);
+    } else {
+      this[direction] = BinarySearchTree(value);
+    }
   }
 };
 
