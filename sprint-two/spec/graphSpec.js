@@ -68,4 +68,9 @@ describe('graph', function() {
     expect(graph.hasEdge(3, 5)).to.equal(true);
     expect(graph.hasEdge(5, 5)).to.equal(true);
   });
+
+  it('should throw an error if an edge is added to a node that doesn\'t exist', function() {
+    graph.addNode(3);
+    expect(function() { graph.addEdge(3, 12); }).to.throw('Cannot read property \'edges\' of undefined');
+  });
 });
